@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .content-auto {
+        content-visibility: auto;
+    }
+
+    body {
+        font-family: 'Inter';
+    }
+
+}
+
+@layer components {
+    #header{
+        @apply border-b-[1px]  fixed w-full top-0 bg-yellow-100/90 backdrop-blur z-20
+    }
+
+    #header .container{
+        @apply px-5 flex justify-between flex-wrap lg:flex-nowrap items-center lg:gap-[70px] gap-5 py-4
+    }
+
+    .hamburger{
+        @apply inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600
+    }
+
+    #header .hidenisasi{
+        @apply flex justify-between flex-col gap-5 items-center
+
+        /* > MD */
+        md:flex-row md:gap-0
+    }
+
+    #header .menu-navigation{
+        @apply flex items-center
+    }
+
+    #header .menu-navigation li a{
+        @apply font-inter text-secondary
+    }
+
+    #header .menu-navigation ul{
+        @apply flex gap-8 flex-col text-center justify-center
+
+        /* > MD */
+        md:flex-row 
+    }
+
+    #header .menu-navigation a{
+        @apply not-italic text-sm font-medium leading-[14px] tracking-[0.01em] 
+        hover:text-[#2b2b39] hover:font-semibold
+    }
+
+    #header .menu-navigation a.active{
+        @apply text-[#2b2b39] font-bold
+    }
+
+    #header .menu-action{
+        @apply flex gap-5 flex-col 
+
+        /* > md */
+        md:flex-row 
+        /* > lg */
+        lg:gap-[47px] lg:flex-row
+    }
+
+
+    #header .button button{
+        @apply py-3 px-6 bg-red-600 text-white rounded-[14px] text-xs leading-[14px]
+
+         hover:bg-red-700
+    }
+}
