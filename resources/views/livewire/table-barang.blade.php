@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container px-5">
     <div class="overflow-x-auto relative sm:rounded-lg pt-24">
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-white uppercase bg-neutral-500">
@@ -9,10 +9,10 @@
                     <th class="py-3 px-6">
                         Nama Barang
                     </th>
-                    <th class="py-3 px-6">
+                    <th class="py-3 px-6 hidden lg:inline-block">
                         Kategori
                     </th>
-                    <th class="py-3 px-6">
+                    <th class="py-3 px-6 hidden lg:inline-block">
                         Material
                     </th>
                     <th class="py-3 px-6">
@@ -30,10 +30,10 @@
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                         {{$item['nama_barang']}}
                     </th>
-                    <td class="py-4 px-6">
+                    <td class="py-4 px-6 hidden lg:inline-block">
                         {{$item['nama_kategori']}}
                     </td>
-                    <td class="py-4 px-6">
+                    <td class="py-4 px-6 hidden lg:inline-block">
                         {{$item['nama_material']}}
                     </td>
                     <td class="py-4 px-6 text-right">
