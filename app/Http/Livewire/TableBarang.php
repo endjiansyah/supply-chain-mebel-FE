@@ -6,8 +6,11 @@ use Livewire\Component;
 
 class TableBarang extends Component
 {
+    public $datanya;
+    
     public function render()
     {
-        return view('livewire.table-barang');
+        // $data = ['datanya' => $this->datanya];
+        return view('livewire.table-barang',$this->datanya);
     }
 }

@@ -8,8 +8,12 @@
     <title>Basic Tailwind CSS</title>
 
     <!-- tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    {{-- alpinejs --}}
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {{-- <script src="resources/js/datanya.js"></script> --}}
 
     <!-- flowbite -->
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
@@ -25,11 +29,8 @@
 <body>
     <!-- nav (navbar) -->
     @livewire('navbar')
-    @livewire('table-barang')
-
     
-
-    
+    @yield('konten')
     <!-- flowbite -->
     <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 </body>
