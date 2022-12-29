@@ -10,18 +10,19 @@ class HttpClient
 
     static function fetch($method, $url, $body = [], $files = [])
     {
-        $headers = [];
-        $token = session()->get("token", "");
-        if ($token != "") {
-            $headers["Authorization"] = "Bearer " . $token;
-        }
+        // $headers = [];
+        // $token = session()->get("token", "");
+        // if ($token != "") {
+        //     $headers["Authorization"] = "Bearer " . $token;
+        // }
 
         //jika method get, langsung return response dengan method get
-        if ($method == "GET") return Http::withHeaders($headers)->get($url)->json();
+        // if ($method == "GET") return Http::withHeaders($headers)->get($url)->json();
+        if ($method == "GET") return Http::get($url)->json();
 
         //jika terdapat file, client berupa multipart
         if (sizeof($files) > 0) {
-            $client = Http::asMultipart()->withHeaders($headers);
+            $client = Http::asMultipart();
             // dd($files);
             //attach setiap file pada client
 
@@ -38,6 +39,6 @@ class HttpClient
         }
 
         //fetch api
-        return Http::withHeaders($headers)->post($url, $body)->json();
+        return Http::post($url, $body)->json();
     }
 }

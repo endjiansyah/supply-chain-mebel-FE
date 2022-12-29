@@ -1,5 +1,3 @@
-<div class="container px-5">
-    <div class="overflow-x-auto relative sm:rounded-lg pt-24">
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-white uppercase bg-neutral-500">
                 <tr>
@@ -16,7 +14,7 @@
                         Material
                     </th>
                     <th class="py-3 px-6">
-                        <span class="sr-only">Edit</span>
+                        <span class="sr-only"></span>
                     </th>
                 </tr>
             </thead>
@@ -37,11 +35,10 @@
                         {{$item['nama_material']}}
                     </td>
                     <td class="py-4 px-6 text-right">
-                        <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                        <a href="{{route('barang.edit',["id" => $item['id']])}}" class="font-medium text-blue-600 hover:underline mr-2">Edit</a>
+                        <a onclick="return confirm('Hapus data {{ $item['nama_barang'] }}?')" href="{{ route('barang.destroy', ['id' => $item['id']]) }}" class="font-medium text-red-600 hover:underline">delete</a>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-    </div>
-</div>

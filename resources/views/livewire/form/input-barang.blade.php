@@ -1,4 +1,4 @@
-<form>
+
     <div class="flex lg:flex-row flex-col gap-2">
         <div class="lg:w-1/2">
             <div>
@@ -7,7 +7,7 @@
                 </label>
 
                 <div class="mt-1 rounded-md shadow-sm">
-                    <input id="nama_barang" name="nama_barang" type="text" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="ex: bwabwa chair" />
+                    <input id="nama_barang" name="nama_barang" type="text" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="ex: bwabwa chair" value="{{$nama_barang}}" />
                 </div>
 
             </div>
@@ -18,17 +18,23 @@
                         Kategori
                     </label>
 
-                    <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : []}" x-init="fetch('http://localhost:8000/api/kategori',{method: 'GET'})
+                    <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : [],cek : {{$id_kategori}}}" x-init="fetch('http://localhost:8000/api/kategori',{method: 'GET'})
                     .then(async (response) => {
                         datanya = await response.json()
                         datanya = datanya.data
                     })">
                         <select id="kategori" name="kategori" required class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                            <option disabled selected>-- Pilih Kategori --</option>
+
+                            <option disabled {{$id_kategori == 0 ? 'selected' : ''}}>-- Pilih Kategori --</option>
                             <template x-for="datane in datanya">
-                                <option value="datane.id">
-                                    <p x-text="datane.nama_kategori"></p>
-                                </option>
+
+                                <template x-if="datane.id != cek">
+                                    <option x-bind:value="datane.id" x-text="datane.nama_kategori">
+                                </template>
+                                <template x-if="datane.id == cek">
+                                    <option x-bind:value="datane.id" x-text="datane.nama_kategori" selected>
+                                </template>
+
                             </template>
 
                         </select>
@@ -39,17 +45,23 @@
                         Material
                     </label>
 
-                    <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : []}" x-init="fetch('http://localhost:8000/api/material',{method: 'GET'})
+                    <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : [],cek : {{$id_material}}}" x-init="fetch('http://localhost:8000/api/material',{method: 'GET'})
                     .then(async (response) => {
                         datanya = await response.json()
                         datanya = datanya.data
                     })">
                         <select id="material" name="material" required class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                            <option disabled selected>-- Pilih Material --</option>
+                            <option disabled {{$id_material == 0 ? 'selected' : ''}}>-- Pilih Kategori --</option>
+                            
                             <template x-for="datane in datanya">
-                                <option value="datane.id">
-                                    <p x-text="datane.nama_material"></p>
-                                </option>
+
+                                <template x-if="datane.id != cek">
+                                    <option x-bind:value="datane.id" x-text="datane.nama_material">
+                                </template>
+                                <template x-if="datane.id == cek">
+                                    <option x-bind:value="datane.id" x-text="datane.nama_kategori" selected>
+                                </template>
+
                             </template>
 
                         </select>
@@ -65,7 +77,7 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input id="panjang" name="panjang" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="*cm" />
+                        <input id="panjang" name="panjang" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="*cm" value="{{$panjang}}" />
                     </div>
 
                 </div>
@@ -76,7 +88,7 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input id="lebar" name="lebar" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="*cm" />
+                        <input id="lebar" name="lebar" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="*cm" value="{{$lebar}}" />
                     </div>
                 </div>
                 {{-- ----- --}}
@@ -86,28 +98,30 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input id="tinggi" name="tinggi" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="*cm" />
+                        <input id="tinggi" name="tinggi" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="*cm" value="{{$tinggi}}" />
                     </div>
                 </div>
             </div>
             <label for="gambar" class="mt-4 block text-sm font-medium text-gray-700 leading-5">
                 Gambar
             </label>
-            <input type="file" id="gambar" name="gambar" required class="w-full px-3 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 bg-white"/>
+            <input type="file" id="gambar" name="gambar" class="w-full px-3 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 bg-white" {{$gambar == '' ? 'required' : ''}} />
         </div>
         <div class="lg:w-1/2">
             <label for="deskripsi" class="block text-sm font-medium text-gray-700 leading-5">
                 deskripsi
             </label>
-            <textarea name="deskripsi" id="" cols="30" rows="10"  class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"></textarea>
+            <textarea name="deskripsi_barang" id="" cols="30" rows="10"  class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">{{$deskripsi_barang}}</textarea>
         </div>
     </div>
 <hr class="my-3">
     <div class="">
-        <span class="block w-full rounded-md">
+        <span class="flex w-full gap-3 items-center">
             <button type="submit" class="flex justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-500 focus:outline-none focus:border-green-700 focus:ring-indigo active:bg-green-700 transition duration-150 ease-in-out">
                 Simpan
             </button>
+            @if ($message = Session::get('success'))
+                <div class="text-green-600" role="alert">{{ $message }}</div>
+            @endif
         </span>
     </div>
-</form>
