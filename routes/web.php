@@ -20,9 +20,9 @@ Route::get('/', function () {
 
 Route::prefix("barang")->name("barang.")->controller(BarangController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    // Route::get(" /detail/{id}", "detail")->name("detail");
+    Route::get("/detail/{id}", "detail")->name("detail");
     // Route::get("/edit/{id}", "edit")->name("edit");
-    // Route::get('/create', 'create')->name('create');
+    Route::get('/create', 'create')->name('create');
     // Route::post('/store', 'store')->name('store');
     // Route::post("/update/{id}", "update")->name("update");
     // Route::get("/destroy/{id}", "destroy")->name("destroy");
