@@ -13,7 +13,9 @@
 
     {{-- alpinejs --}}
     <script src="//unpkg.com/alpinejs" defer></script>
-    {{-- <script src="resources/js/datanya.js"></script> --}}
+    <script>
+
+    </script>
 
     <!-- flowbite -->
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
@@ -31,9 +33,6 @@
     @livewire('navbar')
     
     @yield('konten')
-
-    {{-- @livewire('form.login') --}}
-    {{-- @livewire('form.loginnya') --}}
 
     <!-- flowbite -->
     <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>

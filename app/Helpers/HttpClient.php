@@ -8,37 +8,33 @@ use Illuminate\Support\Facades;
 class HttpClient
 {
 
-    static function fetch($method, $url, $body = [], $files = [])
+    public static function fetch($method, $url, $body = [], $files = [])
     {
-        // $headers = [];
-        // $token = session()->get("token", "");
-        // if ($token != "") {
-        //     $headers["Authorization"] = "Bearer " . $token;
-        // }
+        $headers = [];
+        $token = session()->get("token", "");
 
-        //jika method get, langsung return response dengan method get
-        // if ($method == "GET") return Http::withHeaders($headers)->get($url)->json();
-        if ($method == "GET") return Http::get($url)->json();
-
-        //jika terdapat file, client berupa multipart
-        if (sizeof($files) > 0) {
-            $client = Http::asMultipart();
-            // dd($files);
-            //attach setiap file pada client
-
-            foreach ($files as $key => $file) {
-                $path = $file->getPathname();
-                $name = $file->getClientOriginalName();
-                //attach file (sisipkan file)
-                $client->attach($key, file_get_contents($path), $name);
-                // dd($key, $path, $name);
-            }
-
-            //fetch api
-            return $client->post($url, $body)->json();
+        if ($token != "") {
+            $headers["Authorization"] = "Bearer $token";
         }
 
-        //fetch api
-        return Http::post($url, $body)->json();
+        if ($method == "GET") {
+            return Http::withHeaders($headers)->get($url)->json();
+        }
+
+        if (sizeof($files) > 0) {
+            $client = Http::asMultipart()->withHeaders($headers);
+
+            foreach ($files as $key=> $file) {
+                $path = $file->getPathname();
+                $name = $file->getClientOriginalName();
+                // attach file
+                $client->attach($key, file_get_contents($path), $name);
+            }
+            // fetch api
+            return $client->post($url, $body);
+        }
+
+        // fetch post
+        return Http::withHeaders($headers)->post($url, $body)->json();
     }
 }

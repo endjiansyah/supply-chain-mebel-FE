@@ -1,25 +1,24 @@
 <div class="pt-24">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
-            Sign in to your account
+            Login dulu
         </h2>
+        
     </div>
-
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        
         <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-            <form wire:submit.prevent="authenticate">
+            <form action="{{route('login')}}" method="POST">
+                @csrf
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
-                        Email address
+                        Email
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input id="email" name="email" type="email" required autofocus class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('email') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
+                        <input id="email" name="email" type="email" required autofocus class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                     </div>
 
-                    @error('email')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
                 </div>
 
                 <div class="mt-6">
@@ -28,12 +27,9 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input id="password" type="password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
+                        <input id="password" name="password" type="password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                     </div>
 
-                    @error('password')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
                 </div>
 
                 <div class="mt-6">
@@ -43,6 +39,9 @@
                         </button>
                     </span>
                 </div>
+                @if ($message = Session::get('error'))
+                    <span class="text-center text-red-600 font-bold">{{$message}}</span>
+                @endif
             </form>
         </div>
     </div>
