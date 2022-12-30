@@ -26,7 +26,8 @@ class roleadmin
             if(!$auth) {
                 return redirect("/");
             }
-            if($auth['data']['role'] != 1) {
+            // dd($auth);
+            if($auth['data']['id_role'] != 1) {
                 return redirect(route('home'));
             }
         } else {

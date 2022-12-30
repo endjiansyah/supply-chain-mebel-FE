@@ -15,7 +15,7 @@ class AdminController extends Controller
             "http://localhost:8000/api/user/". $iduser
         );
         $data = $responseData["data"];
-        dd($data,session('id_user'),$iduser);
+        // dd($data,session('id_user'),$iduser);
         return view('dashboard', [
             "data" => $data,
             "page" => 'home'

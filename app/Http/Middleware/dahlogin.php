@@ -26,7 +26,6 @@ class dahlogin
             if(!$auth) {
                 return redirect("/");
             }
-
         } else {
             return redirect("/");
         }

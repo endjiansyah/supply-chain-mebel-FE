@@ -1,6 +1,6 @@
 <div class="gap-2">
         <label for="nama_barang" class="text-sm font-medium text-gray-700 leading-5">
-            Input Barang
+            Order Barang
         </label>
 
     <div class="flex gap-2 items-center">

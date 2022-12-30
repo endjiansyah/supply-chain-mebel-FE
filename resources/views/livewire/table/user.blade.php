@@ -1,6 +1,6 @@
 <table class="w-full text-sm text-left text-gray-500">
     <thead class="text-xs text-white uppercase bg-neutral-500">
-        <tr>
+        <tr class="flex justify-between">
             <th class="py-3 px-6">
                 Role
             </th>
@@ -18,7 +18,7 @@
     <tbody>
         @foreach ($datanya as $item)
             
-        <tr class="bg-white border-b hover:bg-gray-50">
+        <tr class="bg-white border-b hover:bg-gray-50 flex justify-between">
             <td class="py-4 px-6">
                 {{$item['nama_role']}}
             </td>

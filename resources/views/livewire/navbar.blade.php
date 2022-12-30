@@ -22,13 +22,16 @@
                         <li><a href="{{route('home')}}" class="{{$page == 'home' ? 'active': ''}}">Home</a></li>
                         <li><a href="{{route('barang.index')}}" class="{{$page == 'barang'? 'active': ''}}">Barang</a></li>
                         <li><a href="{{route('order.index')}}" class="{{$page == 'order'? 'active': ''}}">Order</a></li>
-                        <li><a href="{{route('user.index')}}" class="{{$page == 'user'? 'active': ''}}">User</a></li>
+                        @if (session('id_user') == 1)
+                            <li><a href="{{route('user.index')}}" class="{{$page == 'user'? 'active': ''}}">User</a></li>
+                        @endif
                     </ul>
                 </div>
 
                 <!-- right -->
                 <div class="menu-action items-center">
                     <div class="button">
+                        {{-- {{session('id_role')}} --}}
                         <a onclick="return confirm('logout ?')" href="{{ route('logout') }}">Log out</a>
                     </div>
                 </div>

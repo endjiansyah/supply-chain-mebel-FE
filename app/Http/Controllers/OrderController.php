@@ -41,7 +41,8 @@ class OrderController extends Controller
 
         return view('order.detail', [
             "data" => $data,
-            "barang" => $barang
+            "barang" => $barang,
+            "page" => 'order'
         ]);
     }
     
@@ -103,14 +104,4 @@ class OrderController extends Controller
 
         return redirect()->back()->with(['success' => 'Data terupdate']);
     } // untuk update data
-
-    // function destroy($id)
-    // {
-    //     HttpClient::fetch(
-    //         "POST",
-    //         "http://localhost:8000/api/order/" . $id . "/delete",
-    //     );
-
-    //     return redirect()->back()->with(['success' => 'Data terhapus']);
-    // } // menghapus data
 }

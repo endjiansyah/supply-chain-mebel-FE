@@ -15,10 +15,24 @@ class BarangController extends Controller
         );
         // dd(session()->get('token'),session('nama'),session('role'));
         $data = $responseData["data"];
+
+        $responseData = HttpClient::fetch(
+            "GET",
+            "http://localhost:8000/api/kategori"
+        );
+        $kategori = $responseData["data"];
+
+        $responseData = HttpClient::fetch(
+            "GET",
+            "http://localhost:8000/api/material"
+        );
+        $material = $responseData["data"];
         
         // dd($data);
         return view('barang.list', [
             "data" => $data,
+            "kategori" => $kategori,
+            "material" => $material,
             "page" => 'barang'
         ]);
     }
