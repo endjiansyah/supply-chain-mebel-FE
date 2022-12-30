@@ -1,6 +1,7 @@
 @extends('template')
 
 @section('title','Tambah User')
+@section('page','user')
 @section('konten')
 <div class="pt-24 container flex justify-center">
     <div class="w-full md:w-3/4 lg:w-1/2">

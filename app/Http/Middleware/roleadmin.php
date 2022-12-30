@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class dahlogin
+class roleadmin
 {
     /**
      * Handle an incoming request.
@@ -26,10 +26,13 @@ class dahlogin
             if(!$auth) {
                 return redirect("/");
             }
-
+            if($auth['data']['role'] != 1) {
+                return redirect(route('home'));
+            }
         } else {
             return redirect("/");
         }
         return $next($request);
     }
+    
 }

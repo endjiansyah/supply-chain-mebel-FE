@@ -18,7 +18,8 @@ class UserController extends Controller
         
         // dd($data);
         return view('user.list', [
-            "data" => $data
+            "data" => $data,
+            "page" => 'user'
         ]);
     }
 
@@ -32,7 +33,8 @@ class UserController extends Controller
         $data = $responseData["data"];
 
         return view('user.detail', [
-            "data" => $data
+            "data" => $data,
+            "page" => 'user'
         ]);
     }
 
@@ -70,21 +72,31 @@ class UserController extends Controller
         $data = $responseData["data"];
 
         return view('user.edit', [
-            "data" => $data
+            "data" => $data,
+            "page" => 'user'
         ]);
     }
 
     function update(Request $request, $id)
     {
-
-        $payload = [
-            "nama" => $request->input("nama"),
-            "email" => $request->input("email"),
-            "password" => $request->input("password"),
-            "id_role" => $request->input("role")
-        ];
-
-        // dd($file);
+        if($request->input("password") != null){
+            if($request->input("password") == $request->input("kpassword")){
+                $payload = [
+                    "nama" => $request->input("nama"),
+                    "email" => $request->input("email"),
+                    "password" => $request->input("password"),
+                    "id_role" => $request->input("role")
+                ];
+            }else{
+                return redirect()->back()->with(['error' => 'Password dan konfirmasi password tidak cocok']);
+            }
+        }else{
+            $payload = [
+                "nama" => $request->input("nama"),
+                "email" => $request->input("email")
+            ];
+        }
+        // dd($payload);
 
         $user = HttpClient::fetch(
             "POST",
@@ -92,13 +104,14 @@ class UserController extends Controller
             $payload
         );
 
+        // dd($user);
+
         return redirect()->back()->with(['success' => 'Data terupdate']);
     } // untuk update data
 
     function resetpass($id)
     {
         $payload = [
-
             "password" => 'hilih'
         ];
         HttpClient::fetch(

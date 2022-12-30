@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function logout(Request $request)
+    public function logout()
     {
         session()->flush();
-        return redirect("/");
+        return redirect('/');
     }
     public function login(Request $request)
     {
@@ -36,16 +36,17 @@ class AuthController extends Controller
             return redirect('/')->with('error', $auth['message']);
         }
 
-        $token = $auth['data']['auth']['token'];
 
+        $token = $auth['data']['auth']['token'];
         $token_type = $auth['data']['auth']['token_type'];
         session()->put("token", "$token_type $token");
+
         session()->put("role", $auth['data']['user']['id_role']);
-        session()->put("nama", $auth['data']['user']['nama']);
+        session()->put("id_user", $auth['data']['user']['id']);
+        session()->put("nama_user", $auth['data']['user']['nama']);
+        // dd($payload,$auth,session('id_user'));
 
-        dd(session('nama'));
-
-            return redirect('/barang')->with('success', 'berhasil login');
+        return redirect('/home');
         
     }
 }

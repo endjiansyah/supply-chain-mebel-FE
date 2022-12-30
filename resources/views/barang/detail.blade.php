@@ -1,5 +1,6 @@
 @extends('template')
 @section('title','Detail Barang')
+@section('page','barang')
 @section('konten')
 
 <section id="detail_barang">

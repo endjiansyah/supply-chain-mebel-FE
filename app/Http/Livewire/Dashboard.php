@@ -4,11 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class Navbar extends Component
+class Dashboard extends Component
 {
-    public $page;
     public function render()
     {
-        return view('livewire.navbar');
+        return view('livewire.dashboard');
     }
 }

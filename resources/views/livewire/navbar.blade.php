@@ -19,16 +19,17 @@
                 <!-- left -->
                 <div class="menu-navigation">
                     <ul>
-                        <li><a href="#!" class="active">Home</a></li>
-                        <li><a href="#!">Blog</a></li>
-                        <li><a href="#!">Events</a></li>
+                        <li><a href="{{route('home')}}" class="{{$page == 'home' ? 'active': ''}}">Home</a></li>
+                        <li><a href="{{route('barang.index')}}" class="{{$page == 'barang'? 'active': ''}}">Barang</a></li>
+                        <li><a href="{{route('order.index')}}" class="{{$page == 'order'? 'active': ''}}">Order</a></li>
+                        <li><a href="{{route('user.index')}}" class="{{$page == 'user'? 'active': ''}}">User</a></li>
                     </ul>
                 </div>
 
                 <!-- right -->
-                <div class="menu-action">
+                <div class="menu-action items-center">
                     <div class="button">
-                        <button>Log in</button>
+                        <a onclick="return confirm('logout ?')" href="{{ route('logout') }}">Log out</a>
                     </div>
                 </div>
             </div>

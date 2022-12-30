@@ -1,6 +1,7 @@
 @extends('template')
 {{-- @livewire('table-barang',['datanya' => $data]) --}}
 @section('title','Tambah Barang')
+@section('page','barang')
 @section('konten')
 <div class="pt-24 container">
     <div class="w-full">

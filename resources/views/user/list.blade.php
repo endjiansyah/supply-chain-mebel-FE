@@ -1,5 +1,6 @@
 @extends('template')
 @section('title','List User')
+@section('page','user')
 @section('konten')
 <div class="container px-5 py-24">
     <div class="sm:rounded-lg">

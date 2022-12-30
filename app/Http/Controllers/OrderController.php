@@ -17,7 +17,8 @@ class OrderController extends Controller
         
         // dd($data);
         return view('order.list', [
-            "data" => $data
+            "data" => $data,
+            "page" => 'order'
         ]);
     }
 
@@ -30,86 +31,78 @@ class OrderController extends Controller
         );
         $data = $responseData["data"];
 
+        $barang = $data['id_barang'];
+        $linknya = "http://localhost:8000/api/barang/" . $barang;
+        $responseData = HttpClient::fetch(
+            "GET",
+            $linknya
+        );
+        $barang = $responseData["data"];
+
         return view('order.detail', [
-            "data" => $data
+            "data" => $data,
+            "barang" => $barang
+        ]);
+    }
+    
+    function store(Request $request)
+    {
+        $payload = [
+            "id_barang" => $request->input("barang"),
+            "id_user" => session('id_user'),
+        ];
+
+        $order = HttpClient::fetch(
+            "POST",
+            "http://localhost:8000/api/order/",
+            $payload
+        );
+        // dd($order,$order['message'],$payload,$file);
+
+        return redirect()->back()->with(['success' => $order['message']]);
+    }
+    function edit($id)
+    {
+        $linknya = "http://localhost:8000/api/order/" . $id;
+        $responseData = HttpClient::fetch(
+            "GET",
+            $linknya
+        );
+        $data = $responseData["data"];
+
+        return view('order.edit', [
+            "data" => $data,
+            "page" => 'order'
         ]);
     }
 
-    // function create()
-    // {
-    //     return view('order.create');
-    // }
+    function update(Request $request, $id)
+    {
 
-    // function store(Request $request)
-    // {
-    //     $payload = [
-    //         "nama_order" => $request->input("nama_order"),
-    //         "deskripsi_order" => $request->input("deskripsi_order"),
-    //         "id_kategori" => $request->input("kategori"),
-    //         "id_material" => $request->input("material"),
-    //         "panjang" => $request->input("panjang"),
-    //         "lebar" => $request->input("lebar"),
-    //         "tinggi" => $request->input("tinggi"),
-    //     ];
+        $payload = [
+            "status" => $request->input("status"),
+            "id_user" => session('id_user'),
+        ];
+        // dd($payload);
+        $file = [];
 
-    //     $file = [
-    //         "gambar" => $request->file('gambar')
-    //     ];
+        if ($request->file('attachment')) {
+            $file = [
+                "attachment" => $request->file('attachment')
+            ];
+        }
+        // dd($file);
 
-    //     $order = HttpClient::fetch(
-    //         "POST",
-    //         "http://localhost:8000/api/order/",
-    //         $payload,
-    //         $file
-    //     );
-    //     // dd($order,$order['message'],$payload,$file);
+        $order = HttpClient::fetch(
+            "POST",
+            "http://localhost:8000/api/order/" . $id . "/edit",
+            $payload,
+            $file
+        );
+        // dd($order);
 
-    //     return redirect()->back()->with(['success' => $order['message']]);
-    // }
-    // function edit($id)
-    // {
-    //     $linknya = "http://localhost:8000/api/order/" . $id;
-    //     $responseData = HttpClient::fetch(
-    //         "GET",
-    //         $linknya
-    //     );
-    //     $data = $responseData["data"];
-
-    //     return view('order.edit', [
-    //         "data" => $data
-    //     ]);
-    // }
-
-    // function update(Request $request, $id)
-    // {
-
-    //     $payload = [
-    //         "nama_order" => $request->input("nama_order"),
-    //         "deskripsi_order" => $request->input("deskripsi_order"),
-    //         "id_kategori" => $request->input("kategori"),
-    //         "id_material" => $request->input("material"),
-    //         "panjang" => $request->input("panjang"),
-    //         "lebar" => $request->input("lebar"),
-    //         "tinggi" => $request->input("tinggi"),
-    //     ];
-    //     $file = [];
-
-    //     if ($request->file('gambar')) {
-    //         $file = [
-    //             "gambar" => $request->file('gambar')
-    //         ];
-    //     }
-    //     // dd($file);
-
-    //     $order = HttpClient::fetch(
-    //         "POST",
-    //         "http://localhost:8000/api/order/" . $id . "/edit",
-    //         $payload,
-    //         $file
-    //     );
-
-    //     return redirect()->back()->with(['success' => 'Data terupdate']);
-    // } // untuk update data
+        return redirect()->back()->with(['success' => 'Data terupdate']);
+    } // untuk update data
 
     // function destroy($id)
     // {

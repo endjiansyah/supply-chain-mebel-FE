@@ -30,7 +30,7 @@
 
 <body>
     <!-- nav (navbar) -->
-    @livewire('navbar')
+    @livewire('navbar',['page' => $page])
     
     @yield('konten')
 

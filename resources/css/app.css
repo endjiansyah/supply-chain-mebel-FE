@@ -67,7 +67,7 @@
     }
 
 
-    #header .button button{
+    #header .button a{
         @apply py-3 px-6 bg-red-600 text-white rounded-[14px] text-xs leading-[14px]
 
          hover:bg-red-700

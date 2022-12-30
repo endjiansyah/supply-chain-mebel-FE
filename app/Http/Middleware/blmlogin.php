@@ -2,12 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Helpers\HttpClient;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class dahlogin
+class blmlogin
 {
     /**
      * Handle an incoming request.
@@ -18,17 +17,9 @@ class dahlogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session::has("token")) {
-            $auth = HttpClient::fetch(
-                "GET",
-                "http://localhost:8000/api/me"
-            );
-            if(!$auth) {
-                return redirect("/");
-            }
-
-        } else {
-            return redirect("/");
+        if (session('token') != null) {
+            // dd(session('token'));
+            return redirect()->route('home');
         }
         return $next($request);
     }

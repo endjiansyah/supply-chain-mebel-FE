@@ -13,11 +13,13 @@ class BarangController extends Controller
             "GET",
             "http://localhost:8000/api/barang"
         );
+        // dd(session()->get('token'),session('nama'),session('role'));
         $data = $responseData["data"];
         
         // dd($data);
         return view('barang.list', [
-            "data" => $data
+            "data" => $data,
+            "page" => 'barang'
         ]);
     }
 
@@ -29,9 +31,10 @@ class BarangController extends Controller
             $linknya
         );
         $data = $responseData["data"];
-
+        // dd($data);
         return view('barang.detail', [
-            "data" => $data
+            "data" => $data,
+            "page" => 'barang'
         ]);
     }
 
@@ -76,7 +79,8 @@ class BarangController extends Controller
         $data = $responseData["data"];
 
         return view('barang.edit', [
-            "data" => $data
+            "data" => $data,
+            "page" => 'barang'
         ]);
     }
 
