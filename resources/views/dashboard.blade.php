@@ -2,9 +2,9 @@
 @section('title','Dashboard')
 @section('page','home')
 @section('konten')
-<div class="pt-24 container">
+<div class="pt-20 container">
     <div class="w-full">
-        <div class="px-4 py-8 shadow sm:rounded-lg sm:px-10">
+        <div class="px-4 py-8 shadow-lg sm:rounded-lg sm:px-10">
             <div x-data="{datanya : []}" x-init="
             fetch('http://localhost:8000/api/user/{{session('id_user')}}',{method: 'GET'})
             .then(async (response) => {

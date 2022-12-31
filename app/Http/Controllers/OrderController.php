@@ -62,20 +62,7 @@ class OrderController extends Controller
 
         return redirect()->back()->with(['success' => $order['message']]);
     }
-    function edit($id)
-    {
-        $linknya = "http://localhost:8000/api/order/" . $id;
-        $responseData = HttpClient::fetch(
-            "GET",
-            $linknya
-        );
-        $data = $responseData["data"];
-
-        return view('order.edit', [
-            "data" => $data,
-            "page" => 'order'
-        ]);
-    }
+    
 
     function update(Request $request, $id)
     {

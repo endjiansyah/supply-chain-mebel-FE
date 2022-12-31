@@ -19,19 +19,25 @@
             </div>
         </div>
         <div class="mt-3 flex flex-col lg:flex-row">
-            <div class="mx-2 p-2 shadow rounded-md w-full lg:w-1/3 bg-slate-100">
+            <div class="mx-2 w-full lg:w-1/3">
                 <form action="{{ route('order.update', ['id' => $data['id']]) }}" method="POST">
                     @csrf
     
                     @switch(session('role'))
                         @case(2)
+                        <div class=" p-2 bg-slate-100 shadow rounded-md">
                             @livewire('form.order.gudang',['status' => $data['status']])
-                            @break
+                        </div>
+                        @break
                         @case(3)
+                        <div class=" p-2 bg-slate-100 shadow rounded-md">
                             @livewire('form.order.supplier',['status' => $data['status']])
+                        </div>
                             @break
                         @case(4)
+                        <div class=" p-2 bg-slate-100 shadow rounded-md">
                             @livewire('form.order.qc',['status' => $data['status']])
+                        </div>
                             @break
                     @endswitch
             
