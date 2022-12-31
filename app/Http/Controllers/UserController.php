@@ -40,7 +40,9 @@ class UserController extends Controller
 
     function create()
     {
-        return view('user.create');
+        return view('user.create',[
+            'page' => 'user'
+        ]);
     }
 
     function store(Request $request)

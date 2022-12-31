@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
@@ -64,6 +65,12 @@ Route::prefix("order")->name("order.")->middleware('dahlogin')->controller(Order
 
 // ----(material)----
 Route::prefix("material")->name("material.")->middleware('dahlogin')->controller(MaterialController::class)->group(function () {
+    Route::post('/store', 'store')->name('store');
+    Route::get("/destroy/{id}", "destroy")->name("destroy");
+});
+
+// ----(kategori)----
+Route::prefix("kategori")->name("kategori.")->middleware('dahlogin')->controller(KategoriController::class)->group(function () {
     Route::post('/store', 'store')->name('store');
     Route::get("/destroy/{id}", "destroy")->name("destroy");
 });

@@ -54,7 +54,9 @@ class BarangController extends Controller
 
     function create()
     {
-        return view('barang.create');
+        return view('barang.create',[
+        "page" => 'barang'
+    ]);
     }
 
     function store(Request $request)

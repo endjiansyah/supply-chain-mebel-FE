@@ -24,8 +24,13 @@
         </template>
         {{-- ------- --}}
         <template x-if="listnya == 'kategori'">
-            <div class="mt-2 flex flex-col lg:flex-row">
-                @livewire('table.kategori',['datanya' => $kategori])
+            <div class="mt-2 flex flex-col-reverse lg:flex-row gap-3">
+                <div class="w-full lg:w-1/2">
+                    @livewire('table.kategori',['datanya' => $kategori])
+                </div>
+                <div class="w-full lg:w-1/2">
+                    @livewire('form.input-kategori')
+                </div>
             </div>
         </template>
         {{-- ------- --}}

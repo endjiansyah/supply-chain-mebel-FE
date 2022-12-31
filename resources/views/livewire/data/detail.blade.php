@@ -1,4 +1,4 @@
-<div class="px-4 py-2 lg:max-w-[600px] flex flex-col gap-1">
+<div class="px-4 py-2 lg:w-1/2 flex flex-col gap-1">
     <h1 class="text-lg font-bold">{{$nama_barang}}</h1>
     <p>Kategori : {{$nama_kategori}}</p>
     <p>{{$deskripsi_barang}}</p>

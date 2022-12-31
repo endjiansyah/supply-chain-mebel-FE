@@ -102,6 +102,6 @@ class OrderController extends Controller
         );
         // dd($order);
 
-        return redirect()->back()->with(['success' => 'Data terupdate']);
+        return redirect()->back()->with(['success' => $order['message']]);
     } // untuk update data
 }
