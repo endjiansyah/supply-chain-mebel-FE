@@ -23,13 +23,31 @@ class KategoriController extends Controller
         return redirect()->back()->with(['success' => $kategori['message']]);
     }
 
+    function update(Request $request, $id)
+    {
+        $request->validate([
+            "nama_kategori" => 'required',
+            "kode" => 'required'
+        ]);
+        $payload = [
+            "nama_kategori" => $request->input("nama_kategori"),
+            "kode" => $request->input("kode")
+        ];
+
+        $barang = HttpClient::fetch(
+            "POST",
+            "http://localhost:8000/api/kategori/" . $id . "/edit",
+            $payload
+        );
+
+        return redirect()->back()->with(['success' => 'Data terupdate']);
+    }
     function destroy($id)
     {
         HttpClient::fetch(
             "POST",
             "http://localhost:8000/api/kategori/" . $id . "/delete",
         );
-
         return redirect()->back()->with(['success' => 'Data terhapus']);
     } // menghapus data
 }
