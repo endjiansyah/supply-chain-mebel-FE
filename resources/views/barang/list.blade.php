@@ -24,7 +24,7 @@
         </template>
         {{-- ------- --}}
         <template x-if="listnya == 'kategori'">
-            <div class="mt-2 flex flex-col-reverse lg:flex-row gap-3"  x-data="{kode:'',kategori:'',id:'',mode:'create'}">
+            <div class="mt-2 flex flex-col-reverse lg:flex-row gap-3" x-data="{kode:'',kategori:'',id:'',mode:'create'}">
                 <div class="w-full lg:w-1/2">
                     @livewire('table.kategori',['datanya' => $kategori])
                 </div>
@@ -35,7 +35,7 @@
         </template>
         {{-- ------- --}}
         <template x-if="listnya == 'material'">
-            <div class="mt-2 flex flex-col-reverse lg:flex-row gap-3">
+            <div class="mt-2 flex flex-col-reverse lg:flex-row gap-3" x-data="{nama:'',keterangan:'',id:'',mode:'create'}">
                 <div class="w-full lg:w-1/2">
                     @livewire('table.material',['datanya' => $material])
                 </div>

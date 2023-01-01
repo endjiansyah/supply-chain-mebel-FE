@@ -23,6 +23,26 @@ class MaterialController extends Controller
         return redirect()->back()->with(['success' => $material['message']]);
     }
 
+    function update(Request $request, $id)
+    {
+        $request->validate([
+            "nama_material" => 'required',
+            "keterangan" => 'required'
+        ]);
+        $payload = [
+            "nama_material" => $request->input("nama_material"),
+            "keterangan" => $request->input("keterangan")
+        ];
+
+        $material = HttpClient::fetch(
+            "POST",
+            "http://localhost:8000/api/material/" . $id . "/edit",
+            $payload
+        );
+
+        return redirect()->back()->with(['success' => 'Data terupdate']);
+    }
+
     function destroy($id)
     {
         HttpClient::fetch(

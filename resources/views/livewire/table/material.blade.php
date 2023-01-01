@@ -21,7 +21,11 @@
             </th>
             @if (session('id_user') == 1 || session('id_user') == 2)
             <td class="py-4 px-6 text-right">
-                <a onclick="return confirm('Hapus data {{ $item['nama_material'] }}?')" href="{{ route('material.destroy', ['id' => $item['id']]) }}" class="font-medium text-red-600 hover:underline">delete</a>
+                <button x-on:click="nama = '{{$item['nama_material']}}',keterangan = '{{$item['keterangan']}}',id = '{{$item['id']}}',mode='update'" class="font-medium text-blue-600 hover:underline">Edit</button>
+
+                @if ($item['total'] == 0)
+                    <a onclick="return confirm('Hapus data {{ $item['nama_material'] }}?')" href="{{ route('material.destroy', ['id' => $item['id']]) }}" class="font-medium text-red-600 hover:underline">delete</a>
+                @endif
             </td>
             @endif
         </tr>

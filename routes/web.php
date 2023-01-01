@@ -65,6 +65,7 @@ Route::prefix("order")->name("order.")->middleware('dahlogin')->controller(Order
 // ----(material)----
 Route::prefix("material")->name("material.")->middleware('dahlogin')->controller(MaterialController::class)->group(function () {
     Route::post('/store', 'store')->name('store');
+    Route::post("/update/{id}", "update")->name("update");
     Route::get("/destroy/{id}", "destroy")->name("destroy");
 });
 
