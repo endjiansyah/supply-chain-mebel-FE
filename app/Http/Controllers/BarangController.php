@@ -66,8 +66,8 @@ class BarangController extends Controller
     {
         $request->validate([
             "nama_barang" => 'required',
-            "id_kategori" => 'required|integer',
-            "id_material" => 'required|integer',
+            "kategori" => 'required|integer',
+            "material" => 'required|integer',
             "panjang" => 'required|integer',
             "lebar" => 'required|integer',
             "tinggi" => 'required|integer',
@@ -120,8 +120,8 @@ class BarangController extends Controller
     {
         $request->validate([
             "nama_barang" => 'required',
-            "id_kategori" => 'required|integer',
-            "id_material" => 'required|integer',
+            "kategori" => 'required|integer',
+            "material" => 'required|integer',
             "panjang" => 'required|integer',
             "lebar" => 'required|integer',
             "tinggi" => 'required|integer'
