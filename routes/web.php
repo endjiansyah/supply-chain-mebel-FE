@@ -44,8 +44,6 @@ Route::prefix("barang")->name("barang.")->middleware('dahlogin')->controller(Bar
 // ----(user)----
 Route::prefix("user")->name("user.")->controller(UserController::class)->group(function () {
     Route::get('/', 'index')->name('index')->middleware('roleadmin');
-    // Route::get("/detail/{id}", "detail")->name("detail");
-    // Route::get("/edit/{id}", "edit")->name("edit");
     Route::get('/create', 'create')->name('create')->middleware('roleadmin');
     Route::post('/store', 'store')->name('store')->middleware('roleadmin');
     Route::post("/update/{id}", "update")->name("update")->middleware('dahlogin');
