@@ -44,7 +44,11 @@ class BarangController extends Controller
             $linknya
         );
         $data = $responseData["data"];
-        // dd($data);
+        
+        if($responseData['status'] == false){
+            return redirect()->route('barang.index');
+        }
+        
         return view('barang.detail', [
             "data" => $data,
             "page" => 'barang'
@@ -101,6 +105,10 @@ class BarangController extends Controller
             $linknya
         );
         $data = $responseData["data"];
+
+        if($responseData['status'] == false){
+            return redirect()->route('barang.index');
+        }
 
         return view('barang.edit', [
             "data" => $data,

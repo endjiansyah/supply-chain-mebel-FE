@@ -30,7 +30,12 @@ class OrderController extends Controller
             $linknya
         );
         $data = $responseData["data"];
+        
+        if($responseData['status'] == false){
+            return redirect()->route('order.index');
+        }
 
+        // -------------------batas suci------------------
         $barang = $data['id_barang'];
         $linknya = "http://localhost:8000/api/barang/" . $barang;
         $responseData = HttpClient::fetch(
@@ -38,7 +43,7 @@ class OrderController extends Controller
             $linknya
         );
         $barang = $responseData["data"];
-
+        
         return view('order.detail', [
             "data" => $data,
             "barang" => $barang,

@@ -29,11 +29,12 @@
                 {{$item['email']}}
             </td>
             <td class="py-4 px-6 text-right">
-                {{-- <a href="{{route('user.edit',["id" => $item['id']])}}" class="font-medium text-blue-600 hover:underline mr-2">Edit</a> --}}
                 @if ($item['id_role'] != 1)
-                <a onclick="return confirm('Reset Password {{ $item['nama'] }}?')" href="{{ route('user.resetpass', ['id' => $item['id']]) }}" class="font-medium text-blue-600 hover:underline mr-2">Reset</a>
 
-                    <a onclick="return confirm('Hapus data {{ $item['nama'] }}?')" href="{{ route('user.destroy', ['id' => $item['id']]) }}" class="font-medium text-red-600 hover:underline">delete</a>
+                <a onclick="return confirm('Reset Password {{ $item['nama'] }}?')" href="{{ route('user.resetpass', ['id' => $item['id']]) }}" class="font-medium text-blue-600 hover:underline mr-2">Reset</a>
+                
+                <a onclick="return confirm('Hapus data {{ $item['nama'] }}?')" href="{{ route('user.destroy', ['id' => $item['id']]) }}" class="font-medium text-red-600 hover:underline">delete</a>
+
                 @endif
 
             </td>
