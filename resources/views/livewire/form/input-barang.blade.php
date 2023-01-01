@@ -7,7 +7,7 @@
                 </label>
 
                 <div class="mt-1 rounded-md shadow-sm">
-                    <input id="nama_barang" name="nama_barang" type="text" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="ex: bwabwa chair" value="{{$nama_barang}}" />
+                    <input id="nama_barang" name="nama_barang" type="text" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('nama_barang') border-yellow-500 border-2 @enderror" placeholder="ex: bwabwa chair" value="{{$nama_barang}}" />
                 </div>
 
             </div>
@@ -77,7 +77,7 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input id="panjang" name="panjang" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="*cm" value="{{$panjang}}" />
+                        <input id="panjang" name="panjang" type="number" autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('panjang') border-yellow-500 border-2 @enderror" placeholder="*cm" value="{{$panjang}}" required />
                     </div>
 
                 </div>
@@ -88,7 +88,7 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input id="lebar" name="lebar" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="*cm" value="{{$lebar}}" />
+                        <input id="lebar" name="lebar" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('lebar') border-yellow-500 border-2 @enderror" placeholder="*cm" value="{{$lebar}}" />
                     </div>
                 </div>
                 {{-- ----- --}}
@@ -98,14 +98,14 @@
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input id="tinggi" name="tinggi" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="*cm" value="{{$tinggi}}" />
+                        <input id="tinggi" name="tinggi" type="number" required autofocus class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('tinggi') border-yellow-500 border-2 @enderror" placeholder="*cm" value="{{$tinggi}}" />
                     </div>
                 </div>
             </div>
             <label for="gambar" class="mt-4 block text-sm font-medium text-gray-700 leading-5">
-                Gambar
+                Gambar @error('gambar') <span class="font-bold text-yellow-500">(Hanya boleh jpg, jpeg, png)</span> @enderror
             </label>
-            <input type="file" id="gambar" name="gambar" class="w-full px-3 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 bg-white" {{$gambar == '' ? 'required' : ''}} />
+            <input type="file" id="gambar" name="gambar" class="w-full px-3 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 bg-white @error('gambar') border-yellow-500 border-2 @enderror" {{$gambar == '' ? 'required' : ''}} />
         </div>
         <div class="lg:w-1/2">
             <label for="deskripsi" class="block text-sm font-medium text-gray-700 leading-5">

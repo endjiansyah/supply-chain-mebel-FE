@@ -13,7 +13,6 @@ class BarangController extends Controller
             "GET",
             "http://localhost:8000/api/barang"
         );
-        // dd(session()->get('token'),session('nama'),session('role'));
         $data = $responseData["data"];
 
         $responseData = HttpClient::fetch(
@@ -61,6 +60,15 @@ class BarangController extends Controller
 
     function store(Request $request)
     {
+        $request->validate([
+            "nama_barang" => 'required',
+            "id_kategori" => 'required|integer',
+            "id_material" => 'required|integer',
+            "panjang" => 'required|integer',
+            "lebar" => 'required|integer',
+            "tinggi" => 'required|integer',
+            "gambar" => 'required|mimes:jpg,jpeg,png',
+        ]);
         $payload = [
             "nama_barang" => $request->input("nama_barang"),
             "deskripsi_barang" => $request->input("deskripsi_barang"),
@@ -102,7 +110,14 @@ class BarangController extends Controller
 
     function update(Request $request, $id)
     {
-
+        $request->validate([
+            "nama_barang" => 'required',
+            "id_kategori" => 'required|integer',
+            "id_material" => 'required|integer',
+            "panjang" => 'required|integer',
+            "lebar" => 'required|integer',
+            "tinggi" => 'required|integer'
+        ]);
         $payload = [
             "nama_barang" => $request->input("nama_barang"),
             "deskripsi_barang" => $request->input("deskripsi_barang"),
@@ -115,6 +130,9 @@ class BarangController extends Controller
         $file = [];
 
         if ($request->file('gambar')) {
+            $request->validate([
+                "gambar" => 'mimes:jpg,jpeg,png',
+            ]); 
             $file = [
                 "gambar" => $request->file('gambar')
             ];

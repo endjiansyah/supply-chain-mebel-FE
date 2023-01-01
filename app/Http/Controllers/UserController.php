@@ -47,6 +47,11 @@ class UserController extends Controller
 
     function store(Request $request)
     {
+        $request->validate([
+            "nama" => 'required',
+            "email" => 'required|email',
+            "role" => 'required|integer',
+        ]);
         $payload = [
             "nama" => $request->input("nama"),
             "email" => $request->input("email"),
@@ -55,12 +60,12 @@ class UserController extends Controller
             "remember_token" => Str::random(10)
         ];
 
+        
         $user = HttpClient::fetch(
             "POST",
             "http://localhost:8000/api/user/",
             $payload
         );
-        // dd($user,$user['message'],$payload,$file);
 
         return redirect()->back()->with(['success' => $user['message']]);
     }
@@ -81,14 +86,24 @@ class UserController extends Controller
 
     function update(Request $request, $id)
     {
+        $request->validate([
+            "nama" => 'required',
+            "email" => 'required|email'
+        ]);
         if($request->input("password") != null){
             if($request->input("password") == $request->input("kpassword")){
+
+                $request->validate([
+                    "password" => 'min:5',
+                ]);
+
                 $payload = [
                     "nama" => $request->input("nama"),
                     "email" => $request->input("email"),
                     "password" => $request->input("password"),
                     "id_role" => $request->input("id_role")
                 ];
+
             }else{
                 return redirect()->back()->with(['error' => 'Password dan konfirmasi password tidak cocok']);
             }
