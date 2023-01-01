@@ -87,7 +87,7 @@ class UserController extends Controller
                     "nama" => $request->input("nama"),
                     "email" => $request->input("email"),
                     "password" => $request->input("password"),
-                    "id_role" => $request->input("role")
+                    "id_role" => $request->input("id_role")
                 ];
             }else{
                 return redirect()->back()->with(['error' => 'Password dan konfirmasi password tidak cocok']);

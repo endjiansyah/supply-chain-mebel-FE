@@ -48,6 +48,9 @@ class OrderController extends Controller
     
     function store(Request $request)
     {
+        $request->validate([
+            'id_barang' => 'required'
+        ]);
         $payload = [
             "id_barang" => $request->input("barang"),
             "id_user" => session('id_user'),
@@ -66,29 +69,56 @@ class OrderController extends Controller
 
     function update(Request $request, $id)
     {
+        if(!$request->input("status") && !$request->input("deskripsi")){
+            return redirect()->back()->with(['error' => 'Tidak ada perubahan apapun']);
+        }
+        
+        $file = [];
+
+        if ($request->file('attachment')) {
+
+            $request->validate([
+                'attachment' => 'mimes:jpg,jpeg,png,pdf'
+            ]);
+
+            $file = [
+                "attachment" => $request->file('attachment')
+            ];
+            
+        }
+
+        $request->validate([
+            'deskripsi' => 'max:255'
+        ]);
 
         $payload = [
             "status" => $request->input("status"),
             "id_user" => session('id_user'),
         ];
         // dd($payload);
-        $file = [];
 
-        if ($request->file('attachment')) {
-            $file = [
-                "attachment" => $request->file('attachment')
-            ];
-        }
-        // dd($file);
-
-        $order = HttpClient::fetch(
+        HttpClient::fetch(
             "POST",
             "http://localhost:8000/api/order/" . $id . "/edit",
-            $payload,
+            $payload
+        );
+
+        // --------- {batas suci} ----------
+        $payloadlog = [
+            "id_order" => $id,
+            "status" => $request->input("status"),
+            "deskripsi" => $request->input("deskripsi"),
+            "id_user" => session('id_user'),
+        ];
+
+        HttpClient::fetch(
+            "POST",
+            "http://localhost:8000/api/log/",
+            $payloadlog,
             $file
         );
-        // dd($order);
+        // --------- {batas suci} ----------
 
-        return redirect()->back()->with(['success' => $order['message']]);
+        return redirect()->back()->with(['success' => 'Status berhasil diubah']);
     } // untuk update data
 }

@@ -8,6 +8,7 @@ use Livewire\Component;
 class Supplier extends Component
 {
     public $status;
+    public $id_order;
     public function render()
     {
         $data = HttpClient::fetch(
@@ -16,6 +17,10 @@ class Supplier extends Component
         );
         $datane = $data["data"];
         // dd($datane);
-        return view('livewire.form.order.supplier',['datane' => $datane , 'status' => $this->status]);
+        return view('livewire.form.order.supplier',[
+            'datane' => $datane,
+            'status' => $this->status,
+            'id_order' => $this->id_order
+        ]);
     }
 }
