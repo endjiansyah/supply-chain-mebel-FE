@@ -119,10 +119,10 @@ fetch('http://localhost:8000/api/status/',{method: 'GET'})
                                     {{$item['nama_status']}}
                                 </td>
                                 <td class="py-4 px-1 md:px-6">
-                                    {{ \Carbon\Carbon::parse($item['updated_at'])->translatedFormat('d F Y H:i:s') }}
+                                    {{$item['nama_user']}}
                                 </td>
                                 <td class="py-4 px-1 md:px-6">
-                                    {{$item['nama_user']}}
+                                    {{ \Carbon\Carbon::parse($item['updated_at'])->translatedFormat('d F Y H:i:s') }}
                                 </td>
                                 <td class="py-4 px-1 md:px-6 text-right">
                                     <a href="{{route('order.detail',["id" => $item['id']])}}" class="font-medium text-blue-600 hover:underline mr-2">Detail</a>

@@ -39,6 +39,7 @@ Route::prefix("barang")->name("barang.")->middleware('dahlogin')->controller(Bar
     Route::post('/store', 'store')->name('store');
     Route::post("/update/{id}", "update")->name("update");
     Route::get("/destroy/{id}", "destroy")->name("destroy");
+    Route::get("/recycle/{id}", "recycle")->name("recycle");
 });
 
 // ----(user)----

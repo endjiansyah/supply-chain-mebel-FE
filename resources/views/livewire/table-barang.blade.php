@@ -1,5 +1,5 @@
         <table class="w-full text-sm text-left text-gray-500">
-            <thead class="text-xs text-white uppercase bg-neutral-500">
+            <thead class="text-xs text-white uppercase" x-bind:class="listnya == 'barang' ? 'bg-neutral-500' : 'bg-yellow-700'">
                 <tr class="flex justify-between">
                     <th class="py-3 px-6">
                         Kode
@@ -39,8 +39,17 @@
                     @if (session('id_user') == 1 || session('id_user') == 2)
                     <td class="py-4 px-6 text-right">
                         <a href="{{route('barang.detail',["id" => $item['id']])}}" class="font-medium text-blue-600 hover:underline mr-2">Detail</a>
-                        <a href="{{route('barang.edit',["id" => $item['id']])}}" class="font-medium text-blue-600 hover:underline mr-2">Edit</a>
-                        <a onclick="return confirm('Hapus data {{ $item['nama_barang'] }}?')" href="{{ route('barang.destroy', ['id' => $item['id']]) }}" class="font-medium text-red-600 hover:underline">delete</a>
+
+                        <template x-if="listnya == 'barang'">
+                            <span>
+                                <a href="{{route('barang.edit',["id" => $item['id']])}}" class="font-medium text-blue-600 hover:underline mr-2">Edit</a>
+                                <a onclick="return confirm('Hapus data {{ $item['nama_barang'] }}?')" href="{{ route('barang.destroy', ['id' => $item['id']]) }}" class="font-medium text-red-600 hover:underline">delete</a>
+                            </span>
+                        </template>
+
+                        <template x-if="listnya == 'recycle'">
+                            <a onclick="return confirm('Reuse data {{ $item['nama_barang'] }}?')" href="{{ route('barang.recycle', ['id' => $item['id']]) }}" class="font-medium text-red-600 hover:underline">Reuse</a>
+                        </template>
                     </td>
                     @endif
                 </tr>

@@ -26,12 +26,19 @@ class BarangController extends Controller
             "http://localhost:8000/api/material"
         );
         $material = $responseData["data"];
+
+        $responseData = HttpClient::fetch(
+            "GET",
+            "http://localhost:8000/api/barangrecycle"
+        );
+        $recycle = $responseData["data"];
         
         // dd($data);
         return view('barang.list', [
             "data" => $data,
             "kategori" => $kategori,
             "material" => $material,
+            "recycle" => $recycle,
             "page" => 'barang'
         ]);
     }
@@ -166,4 +173,14 @@ class BarangController extends Controller
 
         return redirect()->back()->with(['success' => 'Data terhapus']);
     } // menghapus data
+    function recycle($id)
+    {
+        $anjay = HttpClient::fetch(
+            "POST",
+            "http://localhost:8000/api/barang/" . $id . "/recycle",
+        );
+
+        return redirect()->back()->with(['edotensei' => $anjay['message']]);
+    } // menghapus data
+
 }
