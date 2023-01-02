@@ -20,7 +20,7 @@ class KategoriController extends Controller
             $payload
         );
 
-        return redirect()->back()->with(['success' => $kategori['message']]);
+        return redirect()->back()->with(['successktg' => $kategori['message']]);
     }
 
     function update(Request $request, $id)
@@ -40,7 +40,7 @@ class KategoriController extends Controller
             $payload
         );
 
-        return redirect()->back()->with(['success' => 'Data terupdate']);
+        return redirect()->back()->with(['successktg' => 'Data terupdate']);
     }
     function destroy($id)
     {
@@ -48,6 +48,6 @@ class KategoriController extends Controller
             "POST",
             "http://localhost:8000/api/kategori/" . $id . "/delete",
         );
-        return redirect()->back()->with(['success' => 'Data terhapus']);
+        return redirect()->back()->with(['successdktg' => 'Data terhapus']);
     } // menghapus data
 }

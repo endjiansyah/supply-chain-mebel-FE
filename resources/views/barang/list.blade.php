@@ -3,8 +3,8 @@
 @section('page','barang')
 @section('konten')
 <div class="container px-5 py-20">
-    <div x-data="{listnya : 'barang' , sesrole : '{{session('role')}}' }">
-        <div  x-bind:class="listnya == 'barang' && sesrole != '3' && sesrole != '4' ? 'flex justify-between items-center' : 'flex justify-end items-center'">
+    <div x-data="{listnya : 'barang' , sesrole : '{{session('role')}}' }" @if($message = Session::get('successktg') || Session::get('successdktg')) x-init="listnya = 'kategori'" @endif  @if($message = Session::get('successmtr') || Session::get('successdmtr')) x-init="listnya = 'material'" @endif>
+        <div x-bind:class="listnya == 'barang' && sesrole != '3' && sesrole != '4' ? 'flex justify-between items-center' : 'flex justify-end items-center'">
             @if (session('role') == 1 || session('role') == 2)
                 <template x-if="listnya == 'barang'">
                     <a href="{{ route('barang.create') }}" class="px-4 py-2 text-sm font-medium text-white bg-gray-600 border border-transparent rounded-md hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:ring-indigo active:bg-gray-700 float-left">+ Tambah Barang</a>

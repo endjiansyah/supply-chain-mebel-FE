@@ -20,7 +20,7 @@ class MaterialController extends Controller
             $payload
         );
 
-        return redirect()->back()->with(['success' => $material['message']]);
+        return redirect()->back()->with(['successmtr' => $material['message']]);
     }
 
     function update(Request $request, $id)
@@ -40,7 +40,7 @@ class MaterialController extends Controller
             $payload
         );
 
-        return redirect()->back()->with(['success' => 'Data terupdate']);
+        return redirect()->back()->with(['successmtr' => 'Data terupdate']);
     }
 
     function destroy($id)
@@ -50,6 +50,6 @@ class MaterialController extends Controller
             "http://localhost:8000/api/material/" . $id . "/delete",
         );
 
-        return redirect()->back()->with(['success' => 'Data terhapus']);
+        return redirect()->back()->with(['successdmtr' => 'Data terhapus']);
     } // menghapus data
 }

@@ -1,8 +1,11 @@
 <div>
+    @if ($message = Session::get('successdktg'))
+        <div class="text-red-600" role="alert">{{ $message }}</div>
+    @endif
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-white uppercase bg-neutral-500">
             <tr class="flex justify-between">
-                <th class="py-3 px-6 text-center" x-text="link">
+                <th class="py-3 px-6 text-center">
                     kode 
                 </th>
                 <th class="py-3 px-6 text-center">

@@ -28,7 +28,7 @@
                 <button type="submit" class="flex justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-500 focus:outline-none focus:border-green-700 focus:ring-indigo active:bg-green-700 transition duration-150 ease-in-out">
                     Simpan
                 </button>
-                @if ($message = Session::get('success'))
+                @if ($message = Session::get('successktg'))
                     <div class="text-green-600" role="alert">{{ $message }}</div>
                 @endif
             </span>
