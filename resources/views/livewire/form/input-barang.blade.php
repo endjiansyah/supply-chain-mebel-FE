@@ -18,7 +18,7 @@
                         Kategori
                     </label>
 
-                    <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : [],cek : {{$id_kategori}}}" x-init="fetch('http://localhost:8000/api/kategori',{method: 'GET'})
+                    <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : [],cek : {{$id_kategori}}}" x-init="fetch('https://api-supplychainmeuble.fly.dev/api/kategori',{method: 'GET'})
                     .then(async (response) => {
                         datanya = await response.json()
                         datanya = datanya.data
@@ -45,7 +45,7 @@
                         Material
                     </label>
 
-                    <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : [],cek : {{$id_material}}}" x-init="fetch('http://localhost:8000/api/material',{method: 'GET'})
+                    <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : [],cek : {{$id_material}}}" x-init="fetch('https://api-supplychainmeuble.fly.dev/api/material',{method: 'GET'})
                     .then(async (response) => {
                         datanya = await response.json()
                         datanya = datanya.data

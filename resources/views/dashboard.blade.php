@@ -6,7 +6,7 @@
     <div class="w-full">
         <div class="px-4 py-8 shadow-lg sm:rounded-lg sm:px-10">
             <div x-data="{datanya : []}" x-init="
-            fetch('http://localhost:8000/api/user/{{session('id_user')}}',{method: 'GET'})
+            fetch('https://api-supplychainmeuble.fly.dev/api/user/{{session('id_user')}}',{method: 'GET'})
             .then(async (response) => {
                 datanya = await response.json()
                 datanya = datanya.data

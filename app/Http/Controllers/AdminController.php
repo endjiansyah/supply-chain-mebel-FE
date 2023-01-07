@@ -12,7 +12,7 @@ class AdminController extends Controller
         $iduser = session('id_user');
         $responseData = HttpClient::fetch(
             "GET",
-            "http://localhost:8000/api/user/". $iduser
+            "https://api-supplychainmeuble.fly.dev/api/user/". $iduser
         );
         $data = $responseData["data"];
         // dd($data,session('id_user'),$iduser);

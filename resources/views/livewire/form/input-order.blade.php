@@ -5,7 +5,7 @@
 
     <div class="flex gap-2 items-center">
         <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : []}" x-init="
-        fetch('http://localhost:8000/api/barang/',{method: 'GET'})
+        fetch('https://api-supplychainmeuble.fly.dev/api/barang/',{method: 'GET'})
         .then(async (response) => {
             datanya = await response.json()
             datanya = datanya.data

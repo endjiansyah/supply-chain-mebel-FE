@@ -10,7 +10,7 @@ class Log extends Component
     public $id_order;
     public function render()
     {
-        $linknya = "http://localhost:8000/api/log/" . $this->id_order;
+        $linknya = "https://api-supplychainmeuble.fly.dev/api/log/" . $this->id_order;
         $responseData = HttpClient::fetch(
             "GET",
             $linknya

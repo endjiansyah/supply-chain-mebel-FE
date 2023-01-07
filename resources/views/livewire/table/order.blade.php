@@ -1,5 +1,5 @@
 <div  x-data="{datanya : [], listnya : 'semua'}" x-init="
-fetch('http://localhost:8000/api/status/',{method: 'GET'})
+fetch('https://api-supplychainmeuble.fly.dev/api/status/',{method: 'GET'})
 .then(async (response) => {
     datanya = await response.json()
     datanya = datanya.data

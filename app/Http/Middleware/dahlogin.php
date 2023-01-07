@@ -21,7 +21,7 @@ class dahlogin
         if(Session::has("token")) {
             $auth = HttpClient::fetch(
                 "GET",
-                "http://localhost:8000/api/me"
+                "https://api-supplychainmeuble.fly.dev/api/me"
             );
             if(!$auth) {
                 return redirect("/");

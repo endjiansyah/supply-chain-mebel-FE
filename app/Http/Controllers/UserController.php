@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $responseData = HttpClient::fetch(
             "GET",
-            "http://localhost:8000/api/user"
+            "https://api-supplychainmeuble.fly.dev/api/user"
         );
         $data = $responseData["data"];
         
@@ -25,7 +25,7 @@ class UserController extends Controller
 
     function detail($id)
     {
-        $linknya = "http://localhost:8000/api/user/" . $id;
+        $linknya = "https://api-supplychainmeuble.fly.dev/api/user/" . $id;
         $responseData = HttpClient::fetch(
             "GET",
             $linknya
@@ -63,7 +63,7 @@ class UserController extends Controller
         
         $user = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/user/",
+            "https://api-supplychainmeuble.fly.dev/api/user/",
             $payload
         );
 
@@ -71,7 +71,7 @@ class UserController extends Controller
     }
     function edit($id)
     {
-        $linknya = "http://localhost:8000/api/user/" . $id;
+        $linknya = "https://api-supplychainmeuble.fly.dev/api/user/" . $id;
         $responseData = HttpClient::fetch(
             "GET",
             $linknya
@@ -117,7 +117,7 @@ class UserController extends Controller
 
         $user = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/user/" . $id . "/edit",
+            "https://api-supplychainmeuble.fly.dev/api/user/" . $id . "/edit",
             $payload
         );
 
@@ -133,7 +133,7 @@ class UserController extends Controller
         ];
         HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/user/" . $id . "/edit",
+            "https://api-supplychainmeuble.fly.dev/api/user/" . $id . "/edit",
             $payload
         );
 
@@ -144,7 +144,7 @@ class UserController extends Controller
     {
         HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/user/" . $id . "/delete",
+            "https://api-supplychainmeuble.fly.dev/api/user/" . $id . "/delete",
         );
 
         return redirect()->back()->with(['success' => 'Data terhapus']);

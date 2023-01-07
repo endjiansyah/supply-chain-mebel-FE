@@ -14,7 +14,7 @@
             Role @error('role') <span class="text-red-700 font-bold">Wajib diisi</span> @enderror
         </label>
 
-        <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : []}" x-init="fetch('http://localhost:8000/api/role',{method: 'GET'})
+        <div class="mt-1 rounded-md shadow-sm" x-data="{datanya : []}" x-init="fetch('https://api-supplychainmeuble.fly.dev/api/role',{method: 'GET'})
         .then(async (response) => {
             datanya = await response.json()
             datanya = datanya.data

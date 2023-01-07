@@ -16,7 +16,7 @@ class MaterialController extends Controller
 
         $material = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/material/",
+            "https://api-supplychainmeuble.fly.dev/api/material/",
             $payload
         );
 
@@ -36,7 +36,7 @@ class MaterialController extends Controller
 
         $material = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/material/" . $id . "/edit",
+            "https://api-supplychainmeuble.fly.dev/api/material/" . $id . "/edit",
             $payload
         );
 
@@ -47,7 +47,7 @@ class MaterialController extends Controller
     {
         HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/material/" . $id . "/delete",
+            "https://api-supplychainmeuble.fly.dev/api/material/" . $id . "/delete",
         );
 
         return redirect()->back()->with(['successdmtr' => 'Data terhapus']);

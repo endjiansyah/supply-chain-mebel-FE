@@ -16,7 +16,7 @@ class KategoriController extends Controller
 
         $kategori = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/kategori/",
+            "https://api-supplychainmeuble.fly.dev/api/kategori/",
             $payload
         );
 
@@ -36,7 +36,7 @@ class KategoriController extends Controller
 
         $barang = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/kategori/" . $id . "/edit",
+            "https://api-supplychainmeuble.fly.dev/api/kategori/" . $id . "/edit",
             $payload
         );
 
@@ -46,7 +46,7 @@ class KategoriController extends Controller
     {
         HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/kategori/" . $id . "/delete",
+            "https://api-supplychainmeuble.fly.dev/api/kategori/" . $id . "/delete",
         );
         return redirect()->back()->with(['successdktg' => 'Data terhapus']);
     } // menghapus data

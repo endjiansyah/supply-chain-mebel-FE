@@ -24,7 +24,7 @@ class AuthController extends Controller
 
         $auth = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/login",
+            "https://api-supplychainmeuble.fly.dev/api/login",
             $payload,
         );
 

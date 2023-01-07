@@ -11,25 +11,25 @@ class BarangController extends Controller
     {
         $responseData = HttpClient::fetch(
             "GET",
-            "http://localhost:8000/api/barang"
+            "https://api-supplychainmeuble.fly.dev/api/barang"
         );
         $data = $responseData["data"];
 
         $responseData = HttpClient::fetch(
             "GET",
-            "http://localhost:8000/api/kategori"
+            "https://api-supplychainmeuble.fly.dev/api/kategori"
         );
         $kategori = $responseData["data"];
 
         $responseData = HttpClient::fetch(
             "GET",
-            "http://localhost:8000/api/material"
+            "https://api-supplychainmeuble.fly.dev/api/material"
         );
         $material = $responseData["data"];
 
         $responseData = HttpClient::fetch(
             "GET",
-            "http://localhost:8000/api/barangrecycle"
+            "https://api-supplychainmeuble.fly.dev/api/barangrecycle"
         );
         $recycle = $responseData["data"];
         
@@ -45,7 +45,7 @@ class BarangController extends Controller
 
     function detail($id)
     {
-        $linknya = "http://localhost:8000/api/barang/" . $id;
+        $linknya = "https://api-supplychainmeuble.fly.dev/api/barang/" . $id;
         $responseData = HttpClient::fetch(
             "GET",
             $linknya
@@ -96,7 +96,7 @@ class BarangController extends Controller
 
         $barang = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/barang/",
+            "https://api-supplychainmeuble.fly.dev/api/barang/",
             $payload,
             $file
         );
@@ -106,7 +106,7 @@ class BarangController extends Controller
     }
     function edit($id)
     {
-        $linknya = "http://localhost:8000/api/barang/" . $id;
+        $linknya = "https://api-supplychainmeuble.fly.dev/api/barang/" . $id;
         $responseData = HttpClient::fetch(
             "GET",
             $linknya
@@ -156,7 +156,7 @@ class BarangController extends Controller
 
         $barang = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/barang/" . $id . "/edit",
+            "https://api-supplychainmeuble.fly.dev/api/barang/" . $id . "/edit",
             $payload,
             $file
         );
@@ -168,7 +168,7 @@ class BarangController extends Controller
     {
         HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/barang/" . $id . "/delete",
+            "https://api-supplychainmeuble.fly.dev/api/barang/" . $id . "/delete",
         );
 
         return redirect()->back()->with(['success' => 'Data terhapus']);
@@ -177,7 +177,7 @@ class BarangController extends Controller
     {
         $anjay = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/barang/" . $id . "/recycle",
+            "https://api-supplychainmeuble.fly.dev/api/barang/" . $id . "/recycle",
         );
 
         return redirect()->back()->with(['edotensei' => $anjay['message']]);

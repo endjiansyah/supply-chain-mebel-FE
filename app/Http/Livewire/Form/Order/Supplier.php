@@ -13,7 +13,7 @@ class Supplier extends Component
     {
         $data = HttpClient::fetch(
             "GET",
-            "http://localhost:8000/api/status/"
+            "https://api-supplychainmeuble.fly.dev/api/status/"
         );
         $datane = $data["data"];
         // dd($datane);

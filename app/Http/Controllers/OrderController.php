@@ -11,7 +11,7 @@ class OrderController extends Controller
     {
         $responseData = HttpClient::fetch(
             "GET",
-            "http://localhost:8000/api/order"
+            "https://api-supplychainmeuble.fly.dev/api/order"
         );
         $data = $responseData["data"];
         
@@ -24,7 +24,7 @@ class OrderController extends Controller
 
     function detail($id)
     {
-        $linknya = "http://localhost:8000/api/order/" . $id;
+        $linknya = "https://api-supplychainmeuble.fly.dev/api/order/" . $id;
         $responseData = HttpClient::fetch(
             "GET",
             $linknya
@@ -37,7 +37,7 @@ class OrderController extends Controller
 
         // -------------------batas suci------------------
         $barang = $data['id_barang'];
-        $linknya = "http://localhost:8000/api/barang/" . $barang;
+        $linknya = "https://api-supplychainmeuble.fly.dev/api/barang/" . $barang;
         $responseData = HttpClient::fetch(
             "GET",
             $linknya
@@ -63,7 +63,7 @@ class OrderController extends Controller
 
         $order = HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/order/",
+            "https://api-supplychainmeuble.fly.dev/api/order/",
             $payload
         );
         // dd($order,$order['message'],$payload,$file);
@@ -104,7 +104,7 @@ class OrderController extends Controller
 
         HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/order/" . $id . "/edit",
+            "https://api-supplychainmeuble.fly.dev/api/order/" . $id . "/edit",
             $payload
         );
 
@@ -118,7 +118,7 @@ class OrderController extends Controller
 
         HttpClient::fetch(
             "POST",
-            "http://localhost:8000/api/log/",
+            "https://api-supplychainmeuble.fly.dev/api/log/",
             $payloadlog,
             $file
         );
